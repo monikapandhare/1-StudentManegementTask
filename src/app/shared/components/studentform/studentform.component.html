@@ -1,0 +1,100 @@
+
+ 
+                <form class="example-form" (ngSubmit)="onstdAdd()"  [formGroup]="stdForm">
+                   <div class="row">
+                        <div class="col-md-6">
+                           <div class="form-group">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>First Name</mat-label>
+                                    <input type="text" formControlName="FirstName" class="formControl" matInput placeholder="Enter Your Fname">
+                                    <ng-container *ngIf="f['FirstName'].invalid && f['FirstName'].touched">
+                                        <p class="text-danger mt-2" *ngIf="f['FirstName'].hasError('required')">
+                                            This Field Is Mandatory
+                                        </p>
+                                    </ng-container>
+                                    <mat-icon matSuffix>sentiment_dissatisfied</mat-icon>
+                                </mat-form-field>
+                           </div>
+                           <div class="form-group">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Contact</mat-label>
+                                    <input type="tel" formControlName="Contact" class="formControl" matInput placeholder="Enter Your No">
+                                    <example-tel-input formControlName="Contact" required></example-tel-input>
+                                    <mat-icon matSuffix>phone</mat-icon>
+                                    <mat-hint>Include area code</mat-hint>
+                                    <ng-container *ngIf="f['Contact'].touched && f['Contact'].invalid">
+                                        <p class="text-danger" *ngIf="f['Contact'].hasError('required')">
+                                            Contact Is Mandatory Field
+                                        </p>
+                                    </ng-container>
+                                    <ng-container>
+                                        <p class="text-danger" *ngIf="f['Contact'].hasError('pattern')">
+                                            Plz Enter Valid Contact
+                                        </p>
+                                    </ng-container>
+                                    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                                </mat-form-field>
+                           </div>
+                         
+                            <div class="formGroup">
+                                    <label for="Gender">Gender</label>
+                                    <div class="d flex justify-content-between">
+                                        <span *ngFor="let gen of genderArray">
+                                            <input type="radio" formControlName="Gender"
+                                             [value]="gen"
+                                            >
+                                            {{gen}}
+                                        </span>
+                                    </div>
+                            </div>
+                       
+                            
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Last Name</mat-label>
+                                    <input type="text"  formControlName="LastName" class="formControl" matInput placeholder="Enter Your Lname">
+                                    <mat-icon matSuffix>sentiment_dissatisfied</mat-icon>
+                                </mat-form-field>
+                            </div>
+                            <div class="form-group">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Email</mat-label>
+                                    <input type="text"  formControlName="Email" class="formControl" matInput placeholder="Enter Your Email">
+                                    <ng-container *ngIf="f['Email'].touched && f['Email'].invalid">
+                                        <p class="text-danger" *ngIf="f['Email'].hasError('required')">
+                                            Email Is Mandatory Field
+                                        </p>
+                                    </ng-container>
+                                    <ng-container>
+                                        <p class="text-danger" *ngIf="f['Email'].hasError('pattern')">
+                                            Plz Enter Valid Email
+                                        </p>
+                                    </ng-container>
+                                    <mat-icon matSuffix>sentiment_dissatisfied</mat-icon>
+                                </mat-form-field>
+                            </div>
+                       
+                            <div class="form-group">
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Roll No</mat-label>
+                                    <input type="tel"  formControlName="RollNo" class="formControl" matInput placeholder="Enter Your RollNo">
+                                    <mat-icon matSuffix>sentiment_dissatisfied</mat-icon>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                   </div>
+                   <div class="text-right">
+                        <button mat-raised-button type="submit"  *ngIf="!editMode"  color="primary" class="mr-3">Submit</button>
+                        <button mat-raised-button type="button" color="warn"
+                        (click)="onCancel()"
+                        >Cancel</button>
+                        <button mat-raised-button type="button" *ngIf="editMode" color="primary"
+                        (click)="onUpdateStd()"
+                        >Update</button>
+
+                   </div>
+                   
+                </form>
+            

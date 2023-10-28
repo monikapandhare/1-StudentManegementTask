@@ -1,0 +1,17 @@
+
+
+<div class="text-right mb-4">
+    <button mat-raised-button color="primary"
+    (click)="onstdAdd()"
+    >Add Student</button>
+    
+    </div>
+
+<app-student-table
+[stdentData]="stdInfoArray" (emitData)="onSendData($event)"
+(emitStdDelete)="onstdDelete($event)"
+
+       >
+></app-student-table>
+
+<!-- <app-studentform></app-studentform> -->
